@@ -1,0 +1,21 @@
+﻿<div ng-controller="GemDetailsController as gemDetailsCntrl">
+    <img ng-src="{{gemDetailsCntrl.gem.ImageUrl}}" />
+    <div>
+        <label style="margin-right:20px;">{{gemDetailsCntrl.gem.Price}}</label>
+        <label style="margin-left:20px;">{{gemDetailsCntrl.gem.Name}}</label>
+    </div>
+    <div data-ng-if="gemsCntrl.gems.length > 0">
+        <a ng-repeat="gem in gemsCntrl.gems" ui-sref="^.details({gemId: gem.Id})">
+            <img style="display:inline; width: 50px;height:50px;" ng-src="{{gem.ImageUrl}}" />
+        </a>
+    </div>
+    <div data-ng-if="!gemsCntrl.gems || gemsCntrl.gems.length === 0">
+        No Gems Available
+    </div>
+    <div style="margin-top:20px;">
+        <button ui-sref=".description" class="btn success">Description</button>
+        <button class="btn success">Specs</button>
+        <button class="btn success">Reviews</button>
+    </div>
+    <ui-view></ui-view>
+</div>
